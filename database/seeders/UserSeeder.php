@@ -19,21 +19,20 @@ class UserSeeder extends Seeder
         //Admin
         DB::table('users')->insert([
             [
-                'name' =>'Admin',
+                'name' => 'Admin',
                 'email' => 'admin@gmail.com',
-                'password' => Hash::make('123456789'),
-                'role'=>'admin',
-                'status'=>'active'
+                'password' => Hash::make('123'),
+                'role' => 'admin',
+                'status' => 'active'
             ],
             [
-                'name' =>'User',
+                'name' => 'User',
                 'email' => 'user@gmail.com',
-                'password' => Hash::make('123456789'),
-                'role'=>'user',
-                'status'=>'active'
+                'password' => Hash::make('123'),
+                'role' => 'user',
+                'status' => 'active'
             ]
-            
-        ]);
 
+        ]);
     }
 }

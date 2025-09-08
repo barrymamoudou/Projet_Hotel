@@ -52,7 +52,7 @@ class AdminController extends Controller
         if ($request->file('photo')) {
             //on recupere l'image
             $file = $request->file('photo');
-
+            //supprime la photo quand on change de photo
             @unlink(public_path('upload/admin_images/' . $data->photo));
             //le nom de l'image
             $filename = date('YmdHi') . $file->getClientOriginalName();
