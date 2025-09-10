@@ -21,6 +21,7 @@
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
                         <tr>
+                            <th>#</th>
                             <th>Image</th>
                             <th>Name</th>
                             <th>Position</th>
@@ -29,35 +30,33 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                    @foreach ($teams as $team )
+                    @foreach ($teams as $key => $team )
                     <tbody>
                         <tr>
-                            <td>Tiger Nixon</td>
-                            <td>{{ $tem->image }}</td>
-                            <td>{{ $teme->name }}</td>
-                            <td>{{ $teme->position }}</td>
-                            <td>{{ $teme->facebook }}</td>
+                            <td>{{ $key+1 }}</td>
+
                             <td>
-                                <span>
-                                    <a href="" class="btn btn-danger"></a>
-                                </span>
+                                <img src="{{ asset(  $team->image) }}" alt="Image" width="70" ; height="40px">
+
+                            </td>
+                            <td>{{ $team->name }}</td>
+                            <td>{{ $team->position }}</td>
+                            <td>
+                                <a href="{{ $team->facebook }}" target="_blank">
+                                    {{ $team->facebook }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ route('team.edit', $team->id) }}"
+                                    class="px-3 btn btn-warning radius-30 ">Edit</a>
+                                <a href="#" class="btn btn-sm btn-danger"
+                                    onclick="return confirm('Are you sure?')">Delete</a>
                             </td>
 
                         </tr>
 
                     </tbody>
                     @endforeach
-
-                    {{-- <tfoot>
-                        <tr>
-                            <th>Name</th>
-                            <th>Position</th>
-                            <th>Office</th>
-                            <th>Age</th>
-                            <th>Start date</th>
-                            <th>Salary</th>
-                        </tr>
-                    </tfoot> --}}
                 </table>
             </div>
         </div>

@@ -23,58 +23,60 @@
 
                 <div class="col-lg-8">
                     <div class="card">
-                        <div class="card-body">
-                            <div class="mb-3 row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Name</h6>
+                        <form action="{{ route('add.store') }}" method="post" enctype="multipart/form-data">
+                            @csrf
+                            <div class="card-body">
+                                <div class="mb-3 row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Name</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="name" class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="name" class="form-control" />
+                                <div class="mb-3 row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Position</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="position" class="form-control" />
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Position</h6>
+                                <div class="mb-3 row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Facebook</h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="text" name="facebook" class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="position" class="form-control" />
-                                </div>
-                            </div>
-                            <div class="mb-3 row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Facebook</h6>
-                                </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="text" name="facebook" class="form-control" />
-                                </div>
-                            </div>
 
-                            <div class="mb-3 row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0">Photo </h6>
+                                <div class="mb-3 row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Photo </h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input class="form-control" name="image" type="file" id="image">
+                                    </div>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input class="form-control" name="image" type="file" id="image">
-                                </div>
-                            </div>
 
-                            <div class="mb-3 row">
-                                <div class="col-sm-3">
-                                    <h6 class="mb-0"> </h6>
+                                <div class="mb-3 row">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0"> </h6>
+                                    </div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin"
+                                            class="p-1 rounded-circle bg-primary" width="80">
+                                    </div>
                                 </div>
-                                <div class="col-sm-9 text-secondary">
-                                    <img id="showImage" src="{{ url('upload/no_image.jpg') }}" alt="Admin"
-                                        class="p-1 rounded-circle bg-primary" width="80">
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-sm-3"></div>
-                                <div class="col-sm-9 text-secondary">
-                                    <input type="submit" class="px-4 btn btn-primary" value="Save Changes" />
+                                <div class="row">
+                                    <div class="col-sm-3"></div>
+                                    <div class="col-sm-9 text-secondary">
+                                        <input type="submit" class="px-4 btn btn-primary" value="Save Changes" />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
                     </div>
 
                 </div>

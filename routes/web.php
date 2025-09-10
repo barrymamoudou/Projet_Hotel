@@ -38,9 +38,9 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', action: [UserController::class, 'UserProfil'])->name('user.profil');
-    Route::post('/profile/store', action: [UserController::class, 'UserProfilStore'])->name('user.profile.store');
-    Route::get('/logout', action: [UserController::class, 'UserLogout'])->name('user.logout');
+    Route::get('/profile',  [UserController::class, 'UserProfil'])->name('user.profil');
+    Route::post('/profile/store',  [UserController::class, 'UserProfilStore'])->name('user.profile.store');
+    Route::get('/logout',  [UserController::class, 'UserLogout'])->name('user.logout');
 });
 
 
@@ -68,6 +68,7 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(TeamController::class)->group(function () {
         Route::get('/admin/team/all', 'AllTeam')->name('all.team');
         Route::get('/team/add', 'AddTeam')->name('add.team');
-        Route::get('/team/store', 'AddStore')->name('add.store');
+        Route::post('/admin/team/store', action: 'AddStore')->name('add.store');
+        Route::get('team/edit/{id}', 'EditTeam')->name('team.edit');
     });
 });  //middleware pour les pages d'admin
