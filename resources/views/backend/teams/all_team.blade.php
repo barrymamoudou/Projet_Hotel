@@ -49,8 +49,7 @@
                             <td>
                                 <a href="{{ route('team.edit', $team->id) }}"
                                     class="px-3 btn btn-warning radius-30 ">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('Are you sure?')">Delete</a>
+                                <a href="{{ route('team.delete',$team->id) }}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                             </td>
 
                         </tr>
@@ -63,5 +62,41 @@
     </div>
 
 </div>
+
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+    $(function(){
+    $(document).on('click','#delete',function(e){
+        e.preventDefault();
+        var link = $(this).attr("href");
+
+  
+                  Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Delete This Data?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                      window.location.href = link
+                      Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                      )
+                    }
+                  }) 
+    });
+
+  });
+
+</script>
+
 
 @endsection

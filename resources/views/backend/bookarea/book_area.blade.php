@@ -5,13 +5,13 @@
 <div class="page-content">
     <!--breadcrumb-->
     <div class="page-breadcrumb d-none d-sm-flex align-items-center mb-3">
-        <div class="breadcrumb-title pe-3">Edit Team</div>
+        <div class="breadcrumb-title pe-3">Update Book Area </div>
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb mb-0 p-0">
                     <li class="breadcrumb-item"><a href="javascript:;"><i class="bx bx-home-alt"></i></a>
                     </li>
-                    <li class="breadcrumb-item active" aria-current="page">Edit Team</li>
+                    <li class="breadcrumb-item active" aria-current="page">Update Book Area</li>
                 </ol>
             </nav>
         </div>
@@ -25,34 +25,48 @@
                 <div class="col-lg-8">
                     <div class="card">
 
-                        <form action="{{ route('edit.update', $team->id) }}" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('book.area.update')  }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf
 
                             <div class="card-body">
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0"> Name</h6>
+                                        <h6 class="mb-0"> Short Title</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="name" class="form-control" value="{{ $team->name }}" />
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Postion</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="position" class="form-control"
-                                            value="{{ $team->position }}" />
+                                    <div class="form-group col-sm-9 text-secondary">
+                                        <input type="text" name="short_title" class="form-control"
+                                            value="{{ $book->short_title }}" />
                                     </div>
                                 </div>
+
                                 <div class="row mb-3">
                                     <div class="col-sm-3">
-                                        <h6 class="mb-0">Facebook</h6>
+                                        <h6 class="mb-0">Main Title</h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <input type="text" name="facebook" class="form-control"
-                                            value="{{ $team->facebook }}" />
+                                    <div class="form-group col-sm-9 text-secondary">
+                                        <input type="text" name="main_title" class="form-control"
+                                            value="{{ $book->main_title }}" />
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Short Description </h6>
+                                    </div>
+                                    <div class="form-group col-sm-9 text-secondary">
+                                        <textarea class="form-control" id="input40" name="short_desc" rows="3"
+                                            placeholder="Description"> {{ $book->short_desc }} </textarea>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-sm-3">
+                                        <h6 class="mb-0">Link Url</h6>
+                                    </div>
+                                    <div class="form-group col-sm-9 text-secondary">
+                                        <input type="text" name="link_url" class="form-control"
+                                            value="{{ $book->link_url }}" />
                                     </div>
                                 </div>
 
@@ -60,7 +74,7 @@
                                     <div class="col-sm-3">
                                         <h6 class="mb-0">Photo </h6>
                                     </div>
-                                    <div class="col-sm-9 text-secondary">
+                                    <div class="form-group col-sm-9 text-secondary">
                                         <input class="form-control" name="image" type="file" id="image">
                                     </div>
                                 </div>
@@ -70,7 +84,7 @@
                                         <h6 class="mb-0"> </h6>
                                     </div>
                                     <div class="col-sm-9 text-secondary">
-                                        <img id="showImage" src="{{ asset($team->image)  }}" alt="Admin"
+                                        <img id="showImage" src="{{ asset($book->image) }}" alt="Admin"
                                             class="rounded-circle p-1 bg-primary" width="80">
                                     </div>
                                 </div>

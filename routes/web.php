@@ -70,5 +70,18 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
         Route::get('/team/add', 'AddTeam')->name('add.team');
         Route::post('/admin/team/store', action: 'AddStore')->name('add.store');
         Route::get('team/edit/{id}', 'EditTeam')->name('team.edit');
+        Route::post('/edit/update/{id}', 'UpdateTeam')->name('edit.update');
+        Route::get('/delete/{id}', 'deleteTeam')->name('team.delete');
     });
+
+     /// Book Area All Route 
+    Route::controller(TeamController::class)->group(function(){
+
+        Route::get('/book/area', 'BookArea')->name('book.area');
+          Route::post('/book/area/update', 'BookAreaUpdate')->name('book.area.update');
+        
+
+    });
+
+    
 });  //middleware pour les pages d'admin
