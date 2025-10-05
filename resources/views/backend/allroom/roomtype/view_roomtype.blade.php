@@ -16,7 +16,7 @@
     <h6 class="mb-0 text-uppercase">Type Chambre (RoomType)</h6>
     <hr />
     <div class="card">
-        <div class="card-body">
+        <div class="card-body" >
             <div class="table-responsive">
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
                     <thead>
