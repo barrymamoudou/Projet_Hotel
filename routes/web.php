@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Backend\TeamController;
 use App\Http\Controllers\Backend\RoomTypeController;
+use App\Http\Controllers\Backend\RoomController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -88,9 +89,14 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
     Route::controller(RoomTypeController::class)->group(function(){
 
         Route::get('/room/listroom', 'ListRoomType')->name('room.type.list');
-        
-        
+        Route::get('/add/room', 'AddRoomType')->name('add.room.type');
+        Route::post('/add/room/store', 'StoreRoomType')->name('store.room.type');
+    });
 
+    /// Room All Route 
+    Route::controller(RoomController::class)->group(function(){
+        Route::get('/edit/room/{id}', 'EditRoom')->name('edit.room');
+        
     });
     
 });  //middleware pour les pages d'admin

@@ -7,7 +7,7 @@
         <div class="ps-3">
             <nav aria-label="breadcrumb">
                 <ol class="p-0 mb-0 breadcrumb">
-                    <a href="{{ route('add.team') }}" class="px-5 btn btn-outline-primary radius-30">Add Type Chambre (RoomType) </a>
+                    <a href="{{ route('add.room.type') }}" class="px-5 btn btn-outline-primary radius-30">Add Type Chambre (RoomType) </a>
                 </ol>
             </nav>
         </div>
@@ -27,22 +27,26 @@
                             
                         </tr>
                     </thead>
-                    @foreach ($allData as $key => $room )
+                    @foreach ($allData as $key => $item)
+                        @php
+                            $rooms=App\Models\Room::where('roomtype_id',$item->id)->get();
+                        @endphp
                     <tbody>
                         <tr>
                             <td>{{ $key+1 }}</td>
-
+                                                        
                             <td>
-                                <img src="{{ asset(  $room->image) }}" alt="Image" width="70" ; height="40px">
-
+                                <img src="{{ (!empty($item->room->image)) ? url('upload/roomimg/'.$item->room->image) : url('upload/no_image.jpg') }}" alt="" style="width: 50px; height:30px;">
                             </td>
-                            <td>{{ $room->name }}</td>
-                            
+                            <td>{{ $item->name }}</td>
                             <td>
-                                <a href="#"
-                                    class="px-3 btn btn-warning radius-30 ">Edit</a>
-                                <a href="#" class="btn btn-sm btn-danger"
-                                    id="delete">Delete</a>
+                                @foreach ($rooms as $roo)
+                                    <a href="{{ route('edit.room',$roo->id) }}" class="px-3 btn btn-warning radius-30">Edit</a>
+                                    
+                                    <a href="#" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                                   
+                                @endforeach
+                                
                             </td>
 
                         </tr>
