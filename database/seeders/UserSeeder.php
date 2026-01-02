@@ -2,12 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
-
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\{DB, Hash};
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
 {
@@ -23,14 +21,19 @@ class UserSeeder extends Seeder
                 'email' => 'admin@gmail.com',
                 'password' => Hash::make('123'),
                 'role' => 'admin',
-                'status' => 'active'
+                'status' => 'active',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'name' => 'User',
                 'email' => 'user@gmail.com',
                 'password' => Hash::make('123'),
                 'role' => 'user',
-                'status' => 'active'
+                'status' => 'active',
+                'created_at' => now(),
+                'updated_at' => now(),
+                
             ]
 
         ]);

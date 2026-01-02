@@ -60,8 +60,10 @@
                                             <div class="col-12">
                                                 <label for="inputEmailAddress" name="login"
                                                     class="form-label">Email/Phone/Name</label>
-                                                <input type="text" class="form-control" name="login" id="login"
-                                                    placeholder="jhon@example.com">
+                                                <input type="text" class="form-control @error('login') is-invalid @enderror" name="login" id="login">
+                                                @error('login')
+                                                <span class="text-danger">{{$message}}</span>
+                                                @enderror
 
                                             </div>
                                             <div class="col-12">
