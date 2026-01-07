@@ -54,21 +54,25 @@
                                                     </div>
 
                                                     <div class="col-md-6">
-                                                        <label for="input3" class="form-label">Main Image</label>
-                                                        <input type="file" class="form-control" id="input3" placeholder="Phone">
-                                                         <img id="showImage"
-                                                        src="{{ (!empty($editData->image)) ? url('upload/roomimg/'.$editData->image) : url('upload/no_image.jpg') }}"
-                                                        alt="Admin" class="bg bg-primary" width="60">
+                                                        <input type="file" name="image" class="form-control" id="image"  >
+
+                                                        <img id="showImage" src="{{ (!empty($editData->image)) ? url('upload/roomimg/'.$editData->image) : url('upload/no_image.jpg') }}" alt="Admin" class="bg-primary" width="70" height="50"> 
+
+                                                       
                                                     </div>
                                                     
 
                                                     <div class="col-md-6">
                                                         <label for="input4" class="form-label">Gallery Image </label>
-                                                        <input type="file" name="multi_img[]" class="form-control" id="multiImg" accept="image/jpeg, image/jpg, image/gif, image/png" >
-                                                        @foreach($multiimgs as $item)
-                                                        <img src="{{ (!empty($item->multi_img)) ? url('upload/roomimg/multi_img/'.$item->multi_img) : url('upload/no_image.jpg') }}" alt="" width="60">
-                                                        <a href=""><i  class="lni lni-close"></i> </a>
-                                                        @endforeach
+                                                            <input type="file" name="multi_img[]" class="form-control" multiple id="multiImg" accept="image/jpeg, image/jpg, image/gif, image/png" >
+
+                                                            @foreach ($multiimgs as $item)
+
+                                                            <img src="{{ (!empty($item->multi_img)) ? url('upload/roomimg/multi_img/'.$item->multi_img) : url('upload/no_image.jpg') }}" alt="Admin" class="bg-primary" width="60"> 
+
+                                                            <a href="{{ route('delete.mutil.room',$item->id) }}"><i class="lni lni-close"></i> </a>  
+                                                            
+                                                            @endforeach
 
                                                         <div class="row" id="preview_img"></div>
                                                     </div>
@@ -121,38 +125,39 @@
 
                                                     <div class="row mt-2">
                                                         <div class="col-md-12 mb-3">
+                                                            @php
+                                                                $facilities = [
+                                                                    'Complimentary Breakfast',
+                                                                    '32/42 inch LED TV',
+                                                                    'Smoke alarms',
+                                                                    'Minibar',
+                                                                    'Work Desk',
+                                                                    'Free Wi-Fi',
+                                                                    'Safety box',
+                                                                    'Rain Shower',
+                                                                    'Slippers',
+                                                                    'Hair dryer',
+                                                                    'Wake-up service',
+                                                                    'Laundry & Dry Cleaning',
+                                                                    'Electronic door lock'
+                                                                ];
+                                                            @endphp
                                                             @forelse ($basic_facility as $item)
+                                                            
+
                                                                 <div class="basic_facility_section_remove" id="basic_facility_section_remove">
                                                                     <div class="row add_item">
                                                                         <div class="col-md-8">
                                                                             <label for="facility_name" class="form-label"> Room Facilities </label>
-                                                                            <select name="facility_name[]" id="facility_name" class="form-control">
+                                                                            <select name="facility_name[]" id="facility_name" class="form-control" >
                                                                                 <option value="">Select Facility</option>
-                                                                                <option value="Complimentary Breakfast" {{$item->facility_name == 'Complimentary Breakfast'?'selected':''}}>Complimentary Breakfast</option>
-                                                                                    <option value="32/42 inch LED TV"  {{$item->facility_name == 'Complimentary Breakfast'?'selected':''}}> 32/42 inch LED TV</option>
-                                                                                
-                                                                                    <option value="Smoke alarms"  {{$item->facility_name == 'Smoke alarms'?'selected':''}}>Smoke alarms</option>
-                                                                                
-                                                                                    <option value="Minibar" {{$item->facility_name == 'Complimentary Breakfast'?'selected':''}}> Minibar</option>
-                                                                                
-                                                                                    <option value="Work Desk"  {{$item->facility_name == 'Work Desk'?'selected':''}}>Work Desk</option>
-                                                                                
-                                                                                    <option value="Free Wi-Fi" {{$item->facility_name == 'Free Wi-Fi'?'selected':''}}>Free Wi-Fi</option>
-                                                                                
-                                                                                    <option value="Safety box" {{$item->facility_name == 'Safety box'?'selected':''}} >Safety box</option>
-                                                                                
-                                                                                    <option value="Rain Shower" {{$item->facility_name == 'Rain Shower'?'selected':''}} >Rain Shower</option>
-                                                                                
-                                                                                    <option value="Slippers" {{$item->facility_name == 'Slippers'?'selected':''}} >Slippers</option>
-                                                                                
-                                                                                    <option value="Hair dryer" {{$item->facility_name == 'Hair dryer'?'selected':''}} >Hair dryer</option>
-                                                                                
-                                                                                    <option value="Wake-up service"  {{$item->facility_name == 'Wake-up service'?'selected':''}}>Wake-up service</option>
-                                                                                
-                                                                                    <option value="Laundry & Dry Cleaning" {{$item->facility_name == 'Laundry & Dry Cleaning'?'selected':''}} >Laundry & Dry Cleaning</option>
-                                                                                    
-                                                                                    <option value="Electronic door lock"  {{$item->facility_name == 'Electronic door lock'?'selected':''}}>Electronic door lock</option> 
-                                                                            </select>
+                                                                                @foreach($facilities as $facility)
+                                                                                    <option value="{{ $facility }}"
+                                                                                        {{ $item->facility_name == $facility ? 'selected' : '' }}>
+                                                                                        {{ $facility }}
+                                                                                    </option>
+                                                                                @endforeach
+                                                                            </select>    
                                                                         </div>
                                                                         <div class="col-md-4">
                                                                             <div class="form-group" style="padding-top: 30px;">
@@ -161,7 +166,7 @@
 
 
 
-                                                                                <a class="btn btn-success addeventmore"><i class="lni     lni-circle-plus"></i></a>
+                                                                                <a class="btn btn-success addeventmore"><i class="lni lni-circle-plus"></i></a>
                                                                                 <span class="btn btn-danger btn-sm removeeventmore"><i class="lni lni-circle-minus"></i></span>
                                                                             </div>
                                                                         </div>
@@ -213,7 +218,7 @@
                                                     
                                                     <div class="col-md-12">
                                                         <div class="d-md-flex d-grid align-items-center gap-3">
-                                                            <button type="button" class="btn btn-primary px-4">Enregistrement</button>
+                                                            <button type="submit" class="btn btn-primary px-4">Enregistrement</button>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -367,7 +372,7 @@
        </div>
     </div>
  </div>
- NUDES 
+
  <script type="text/javascript">
     $(document).ready(function(){
        var counter = 0;

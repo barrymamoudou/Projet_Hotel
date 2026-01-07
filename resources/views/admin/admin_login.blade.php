@@ -13,7 +13,7 @@
     <link href="{{ asset('backend/assets/plugins/metismenu/css/metisMenu.min.css') }}" rel="stylesheet" />
     <!-- loader-->
     <link href="{{ asset('backend/assets/css/pace.min.css') }}" rel="stylesheet" />
-    <script src="{{ asset('backend/assets/js/pace.min.js') }}"></script>
+    <script src="{{asset('backend/assets/js/pace.min.js') }}"></script>
     <!-- Bootstrap CSS -->
     <link href="{{ asset('backend/assets/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('backend/assets/css/bootstrap-extended.css') }}" rel="stylesheet">
@@ -58,23 +58,21 @@
                                         <form class="row g-3" method="POST" action="{{ route('login') }}">
                                             @csrf
                                             <div class="col-12">
-                                                <label for="inputEmailAddress" name="login"
+                                                <label for="" name="login"
                                                     class="form-label">Email/Phone/Name</label>
-                                                <input type="text" class="form-control @error('login') is-invalid @enderror" name="login" id="login">
-                                                @error('login')
-                                                <span class="text-danger">{{$message}}</span>
-                                                @enderror
+                                                <input type="text" class="form-control" name="login" id="login">
+                                                
+
+                                            
 
                                             </div>
+                                           
                                             <div class="col-12">
-                                                <label for="inputChoosePassword" class="form-label">Password</label>
-                                                <div class="input-group" id="Password">
-                                                    <input type="password" class="form-control border-end-0"
-                                                        id="inputChoosePassword" placeholder="Enter Password"> <a
-                                                        href="javascript:;" class="bg-transparent input-group-text"><i
-                                                            class="bx bx-hide"></i></a>
-                                                </div>
-                                            </div>
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" name="password" id="password"
+                                            required autocomplete="current-password" placeholder="Password">
+                                    </div>
+                                </div>
                                             <div class="col-md-6">
                                                 <div class="form-check form-switch">
                                                     <input class="form-check-input" type="checkbox"
