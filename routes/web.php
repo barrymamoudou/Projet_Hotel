@@ -80,12 +80,14 @@ Route::middleware(['auth', 'roles:admin'])->group(function () {
 
     Route::controller(RoomController::class)->group(function(){
         Route::get('/edit/room/{id}', 'EditRoom')->name('edit.room');
-        
+
         Route::post('/mutlimage/room/{id}', 'UpdateRoom')->name('update.room');
 
         Route::get('/mutlimage/mutlimage/{id}', 'MultiImageDelete')->name('delete.mutil.room');
 
         Route::post('/store/room/no/{id}', 'StoreRoomNumber')->name('store.room.no');
+
+         Route::get('/delete/room/{id}', 'DeleteRoom')->name('delete.room');
     });
 
 

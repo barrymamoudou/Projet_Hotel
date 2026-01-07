@@ -43,7 +43,7 @@
                                 @foreach ($rooms as $roo)
                                     <a href="{{ route('edit.room',$roo->id) }}" class="px-3 btn btn-warning radius-30">Edit</a>
                                     
-                                    <a href="#" class="btn btn-sm btn-danger" id="delete">Delete</a>
+                                    <a href="{{ route('delete.room',$roo->id) }}" class="btn btn-sm btn-danger" id="delete">Delete</a>
                                    
                                 @endforeach
                                 
